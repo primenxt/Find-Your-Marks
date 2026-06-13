@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Marks Manager</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    margin:0;
+    padding:0;
+}
+
+header{
+    background:#0078d7;
+    color:white;
+    padding:15px;
+    text-align:center;
+    position:relative;
+}
+
+.developer{
+    position:absolute;
+    right:20px;
+    top:15px;
+    font-size:14px;
+}
+
+.container{
+    max-width:700px;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+}
+
+select,input{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    background:#0078d7;
+    color:white;
+    border:none;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+button:hover{
+    background:#005bb5;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table,th,td{
+    border:1px solid #ccc;
+}
+
+th,td{
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#0078d7;
+    color:white;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🏠 Home Page - Student Marks Manager</h1>
+    <div class="developer">Developer: Your Name</div>
+</header>
+
+<div class="container">
+    <h2>Save Subject Marks</h2>
+
+    <label>Select Subject</label>
+    <select id="subject">
+        <option value="">-- Select Subject --</option>
+        <option>Mathematics</option>
+        <option>Science</option>
+        <option>Social Science</option>
+        <option>English</option>
+        <option>Computer</option>
+        <option>Hindi</option>
+        <option>Sanskrit</option>
+    </select>
+
+    <label>Enter Marks</label>
+    <input type="number" id="marks" min="0" max="100" placeholder="Enter marks">
+
+    <button onclick="saveMarks()">Save Marks</button>
+
+    <table id="marksTable">
+        <tr>
+            <th>Subject</th>
+            <th>Marks</th>
+        </tr>
+    </table>
+</div>
+
+<script>
+function saveMarks() {
+    let subject = document.getElementById("subject").value;
+    let marks = document.getElementById("marks").value;
+
+    if(subject === "" || marks === "") {
+        alert("Please select a subject and enter marks.");
+        return;
+    }
+
+    let table = document.getElementById("marksTable");
+    let row = table.insertRow();
+
+    row.insertCell(0).innerHTML = subject;
+    row.insertCell(1).innerHTML = marks;
+
+    document.getElementById("subject").selectedIndex = 0;
+    document.getElementById("marks").value = "";
+}
+</script>
+
+</body>
+</html>
